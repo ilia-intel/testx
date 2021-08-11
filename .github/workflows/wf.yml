@@ -1,4 +1,6 @@
 on:
+  check_run:
+  check_suite:
   workflow_run:
     workflows: ["CI"]
     
