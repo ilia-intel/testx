@@ -17,5 +17,5 @@ jobs:
      - name: get logs
        env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-       run: wget $(echo "$JOB_CONTEXT" | jq -r '.event.workflow_run.logs_url')
+       run: wget $(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.logs_url')
      
