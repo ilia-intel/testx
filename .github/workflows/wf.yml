@@ -6,7 +6,7 @@ on:
     
 
 jobs:
-  test:
+  get_logs:
     runs-on: ubuntu-latest
     steps:
      - run: echo Hi
@@ -22,5 +22,7 @@ jobs:
         echo $logs_url
         jobs_url=$(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.jobs_url')
         echo $jobs_url
-        curl -v -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $jobs_url
+        curl -i -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $jobs_url
+        echo ---------------------------------
+        curl -i -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $logs_url
      
