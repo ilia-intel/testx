@@ -17,5 +17,10 @@ jobs:
      - name: get logs
        env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-       run: wget $(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.logs_url')
+       run: |
+        logs_url=$(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.logs_url')
+        echo $logs_url
+        jobs_url=$(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.jobs_url')
+        echo $jobs_url
+        curl -v -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $jobs_url
      
