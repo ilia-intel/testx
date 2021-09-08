@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Notice
-        shell: ls -al {0}
+        shell: cat {0}
         run: echo "::notice::NOTE!!!!"
       - name: Errr
         run: echo "::error::ERR!!!!"
