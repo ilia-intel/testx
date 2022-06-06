@@ -18,6 +18,7 @@ jobs:
        env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
        run: |
+        echo "TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST"
         logs_url=$(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.logs_url')
         echo $logs_url
         jobs_url=$(echo "$GITHUB_CONTEXT" | jq -r '.event.workflow_run.jobs_url')
